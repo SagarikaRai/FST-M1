@@ -1,20 +1,39 @@
-package liveProject;
-import org.openqa.selenium.By;
+package Examples;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
 
 public class Activity3 {
     public static void main(String[] args) {
+
+        // Create a new instance of the Firefox driver
         WebDriver driver = new FirefoxDriver();
-        driver.get("http://alchemy.hguy.co/orangehrm");
-        driver.findElement(By.xpath("//input[@name=\"txtUsername\"]")).sendKeys("orange");
-        driver.findElement(By.xpath("//input[@name=\"txtPassword\"]")).sendKeys("orangepassword123");
-        driver.findElement(By.xpath("//input[@name=\"Submit\"]")).click();
-        String home = "http://alchemy.hguy.co:8080/orangehrm/symfony/web/index.php/dashboard";
-        String currentURL = driver.getCurrentUrl();
-        if(home.equals(currentURL)){
-            driver.close();
-        }
+
+        //Open the browser
+        driver.get("https://www.training-support.net/selenium/simple-form");
+
+        //Find the page title and print it
+        String pageTitle = driver.getTitle();
+        System.out.println(pageTitle);
+
+        //Find the input fields
+        WebElement firstName = driver.findElement(By.id("firstName"));
+        WebElement lastName = driver.findElement(By.id("lastName"));
+        //Enter text
+        firstName.sendKeys("Saahil");
+        lastName.sendKeys("Sharma");
+
+        //Enter the email
+        driver.findElement(By.id("email")).sendKeys("test@example.com");
+
+        //Enter the contact number
+        driver.findElement(By.id("number")).sendKeys("1234567890");
+
+        //Click Submit
+        driver.findElement(By.cssSelector(".ui.green.button")).click();
+
+        //Close the browser
+        driver.close();
     }
 }
